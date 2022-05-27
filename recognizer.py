@@ -28,6 +28,7 @@ class Recognition:
         title_lbl=Label(self.root,text="FACE RECOGNITION",font=("sans-serif",35,"bold"),bg="white",fg="green")
         title_lbl.place(x=0,y=0,width=1530,height=45)
         
+        #time button
         def time():
             string=strftime('%H:%M:%S %p')
             lbl.config(text=string)
@@ -98,11 +99,13 @@ class Recognition:
                 d1=now.strftime("%d_%m_%Y")
                 dtstring=now.strftime("%H:%M:%S")
                 f.writelines(f"\n{i},{n},{d},{dtstring},{d1},Present")
+                #Making connection to AWS
                 conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 x1="P"
                 d2=str(d1)
-                x2=100/var_total   
+                x2=100/var_total
+                #Making connection to AWS   
                 conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute(f"insert into attendancetable (Student_id,Name,Dep,{d2},PERCENT) values(%s,%s,%s,%s,%s)",(
@@ -127,7 +130,7 @@ class Recognition:
                 id,predict=clf.predict(gray_image[y:y+h,x:x+w])
                 confidence=int((100*(1-predict/300)))
                 
-                
+                #Making connection to AWS
                 conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
 

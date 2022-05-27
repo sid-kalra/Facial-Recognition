@@ -13,6 +13,7 @@ import cv2
 from time import strftime
 from datetime import datetime
 import pymysql
+#importing all the libraries
 
 class Face_Recognition_System:
     def __init__(self,root):
@@ -28,6 +29,7 @@ class Face_Recognition_System:
         bg_img=Label(self.root,image=self.photoimg4)
         bg_img.place(x=0,y=0,width=1530,height=930)
         
+        #title of page
         title_lbl=Label(self.root,text="ATTENDANCE SYSTEM SOFTWARE",font=("times new roman",40,"bold"),fg="red",bg="#171717")
         title_lbl.place(x=0,y=100,width=1530,height=50)
         
@@ -116,8 +118,6 @@ class Face_Recognition_System:
         else:
             return
     
-        
-        
     #Function Button
     def student_details(self):
         self.new_window=Toplevel(self.root)

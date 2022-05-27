@@ -285,6 +285,7 @@ class Attendance:
         self.root.destroy()
     
     def low(self):
+        #Making connection to AWS
         conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from attendancetable where PERCENT<75.0")
@@ -299,6 +300,7 @@ class Attendance:
             conn.commit()
         conn.close()
     def perfect(self):
+        #Making connection to AWS
         conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from attendancetable where PERCENT=100.0")
@@ -315,6 +317,7 @@ class Attendance:
         
     #fetch data from database
     def fetch_data(self):
+        #Making connection to AWS
         conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from attendancetable")
@@ -332,6 +335,7 @@ class Attendance:
             messagebox.showerror("Error","Please select option")
         else:
             try:
+                #Making connection to AWS
                 conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute("select * from attendancetable where "+str(self.var_search_combo.get())+" LIKE '%"+str(self.var_search.get())+"%'")
@@ -352,6 +356,7 @@ class Attendance:
             fln=filedialog.asksaveasfilename(initialfile=os.getcwd(),title="Open Csv",filetypes=(("CSV File","*csv"),("All File","*.*")),parent=self.root)    
             with open(fln,mode="w",newline="") as myfile:
                 exp_write=csv.writer(myfile,delimiter=",")
+                #Making connection to AWS
                 conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute("Select * from attendancetable")
@@ -363,7 +368,8 @@ class Attendance:
         
         except Exception as es:
                 messagebox.showerror("Error",f"Due to :{str(es)}",parent=self.root)
-        
+                
+    #fetch details    
     def cursor(self,event=""):
         cursor_row=self.AttendanceReportTable.focus()
         content=self.AttendanceReportTable.item(cursor_row)
@@ -376,6 +382,7 @@ class Attendance:
         self.var_dep.set(rows[2])
         self.var_percent.set(rows[3])
         d3=self.var_id.get()
+        #Making connection to AWS
         conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
         my_cursor=conn.cursor()
         my_cursor.execute(f"select {d2} from attendancetable where Student_id= {d3}",())

@@ -233,6 +233,7 @@ class Student:
             messagebox.showerror("Error","All fields are required",parent=self.root)
         else:
             try:
+                #Making connection to AWS
                 conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute("insert into student values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
@@ -257,6 +258,7 @@ class Student:
             
     #fetch data from database
     def fetch_data(self):
+        #Making connection to AWS
         conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from student")
@@ -292,6 +294,7 @@ class Student:
             try:
                 Update=messagebox.askyesno("Update","Do you want to update this student details",parent=self.root)
                 if Update>0:
+                    #Making connection to AWS
                     conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                     my_cursor=conn.cursor()
                     my_cursor.execute("update student set Dep=%s,Year=%s,Name=%s,Gender=%s,Dob=%s,Email=%s,Phone=%s,PhotoSample=%s where Student_id=%s",(
@@ -324,6 +327,7 @@ class Student:
             try:
                 delete=messagebox.askyesno("Delete Student details","Do you want to delete this student",parent=self.root)
                 if delete>0:
+                    #Making connection to AWS
                     conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                     my_cursor=conn.cursor()
                     sql="delete from student where Student_id=%s"
@@ -347,6 +351,7 @@ class Student:
             messagebox.showerror("Error","Please select option")
         else:
             try:
+                #Making connection to AWS
                 conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute("select * from student where "+str(self.var_search_combo.get())+" LIKE '%"+str(self.var_search.get())+"%'")
@@ -383,6 +388,7 @@ class Student:
             messagebox.showerror("Error","No photo sample is selected",parent=self.root)    
         if(self.var_radio.get()=="Yes"):
             try:
+                #Making connection to AWS
                 conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute("select * from student")

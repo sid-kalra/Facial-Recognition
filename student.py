@@ -234,7 +234,7 @@ class Student:
         else:
             try:
                 #Making connection to AWS
-                conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+                conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute("insert into student values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
                                                 self.var_dep.get(),                                                
@@ -259,7 +259,7 @@ class Student:
     #fetch data from database
     def fetch_data(self):
         #Making connection to AWS
-        conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+        conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from student")
         data=my_cursor.fetchall()
@@ -295,7 +295,7 @@ class Student:
                 Update=messagebox.askyesno("Update","Do you want to update this student details",parent=self.root)
                 if Update>0:
                     #Making connection to AWS
-                    conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+                    conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                     my_cursor=conn.cursor()
                     my_cursor.execute("update student set Dep=%s,Year=%s,Name=%s,Gender=%s,Dob=%s,Email=%s,Phone=%s,PhotoSample=%s where Student_id=%s",(
                                                 self.var_dep.get(),                                              
@@ -328,7 +328,7 @@ class Student:
                 delete=messagebox.askyesno("Delete Student details","Do you want to delete this student",parent=self.root)
                 if delete>0:
                     #Making connection to AWS
-                    conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+                    conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                     my_cursor=conn.cursor()
                     sql="delete from student where Student_id=%s"
                     val=(self.var_std_id.get(),)
@@ -352,7 +352,7 @@ class Student:
         else:
             try:
                 #Making connection to AWS
-                conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+                conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute("select * from student where "+str(self.var_search_combo.get())+" LIKE '%"+str(self.var_search.get())+"%'")
                 rows=my_cursor.fetchall()
@@ -389,7 +389,7 @@ class Student:
         if(self.var_radio.get()=="Yes"):
             try:
                 #Making connection to AWS
-                conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+                conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute("select * from student")
                 my_result=my_cursor.fetchall()

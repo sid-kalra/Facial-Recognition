@@ -72,7 +72,7 @@ class Recognition:
                 d1=now.strftime("%d_%m_%Y")
                 dtstring=now.strftime("%H:%M:%S")
                 f.writelines(f"\n{i},{n},{d},{dtstring},{d1},Present")
-                conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+                conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 x1="P"
                 d2=str(d1)
@@ -100,13 +100,13 @@ class Recognition:
                 dtstring=now.strftime("%H:%M:%S")
                 f.writelines(f"\n{i},{n},{d},{dtstring},{d1},Present")
                 #Making connection to AWS
-                conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+                conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 x1="P"
                 d2=str(d1)
                 x2=100/var_total
                 #Making connection to AWS   
-                conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+                conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
                 my_cursor.execute(f"insert into attendancetable (Student_id,Name,Dep,{d2},PERCENT) values(%s,%s,%s,%s,%s)",(
                                         i,
@@ -131,7 +131,7 @@ class Recognition:
                 confidence=int((100*(1-predict/300)))
                 
                 #Making connection to AWS
-                conn=pymysql.connect(host="database1.chw7a9s6h44d.us-west-2.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
+                conn=pymysql.connect(host="database-1.c8p2buhnk0xl.ap-south-1.rds.amazonaws.com",user="admin",password="Mysql123",database="face_recognizer")
                 my_cursor=conn.cursor()
 
                 
